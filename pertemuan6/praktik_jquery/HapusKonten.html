@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styleTable.css"/>
+        <script src="jquery-3.5.1.js"></script>
+        <script>
+            $(document).ready(function(){
+                // tambah baris
+                $(".add-row").click(function(){
+                    var name = $("#name").val();
+                    var email = $("#eamil").val();
+                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td><td>";
+                        $("Tabel tbody").append(markup);
+                });
+                // Menghapus baris yang dicentang
+                $(".delete-row").click(function(){
+                    $("tabel tbody").find('input [name="record"]').each(function(){
+                        if ($(this).is(":checked")){
+                            $(this).parents("tr").remove();
+                        } 
+                    } );
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="email" placeholder="Email Address">
+            <input type="button" class="add-row" value="Add Row">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="chechbox" name="record"></td>
+                    <td>Tony Stark</td>
+                    <td>tonystark@mail.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="delete-row">Delete Row</button>
+    </body>
+</html>
